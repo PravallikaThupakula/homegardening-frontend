@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+/* ========== DARK MODE (data-theme, no Tailwind dark: needed) ========== */
+:root {
+  --bg-page: #f9fafb;
+  --bg-card: #ffffff;
+  --bg-sidebar: #dcfce7;
+  --bg-header: #ffffff;
+  --text-primary: #111827;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --hover-bg: #bbf7d0;
+}
+
+[data-theme="dark"] {
+  --bg-page: #0f172a;
+  --bg-card: #1e293b;
+  --bg-sidebar: #14532d;
+  --bg-header: rgba(0, 0, 0, 0.6);
+  --text-primary: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --hover-bg: rgba(34, 197, 94, 0.2);
+}
+
+/* Apply to body and #root so whole app respects theme */
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+[data-theme="dark"] body,
+[data-theme="dark"] #root {
+  background-color: var(--bg-page) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Override common Tailwind classes when dark */
+[data-theme="dark"] .bg-white {
+  background-color: var(--bg-card) !important;
+}
+[data-theme="dark"] .bg-gray-50 {
+  background-color: #1e293b !important;
+}
+[data-theme="dark"] .bg-gray-100 {
+  background-color: #334155 !important;
+}
+[data-theme="dark"] .bg-gray-900 {
+  background-color: #0f172a !important;
+}
+[data-theme="dark"] .bg-gray-800 {
+  background-color: #1e293b !important;
+}
+[data-theme="dark"] .bg-gray-950 {
+  background-color: #020617 !important;
+}
+[data-theme="dark"] .text-black {
+  color: #f1f5f9 !important;
+}
+[data-theme="dark"] .text-gray-500,
+[data-theme="dark"] .text-gray-600 {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .text-gray-400 {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .text-gray-700 {
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .text-gray-300 {
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .border-gray-200,
+[data-theme="dark"] .border-gray-700,
+[data-theme="dark"] .border-gray-800 {
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .bg-green-100 {
+  background-color: #14532d !important;
+}
+[data-theme="dark"] .bg-green-200 {
+  background-color: rgba(34, 197, 94, 0.25) !important;
+}
+[data-theme="dark"] .text-green-900 {
+  color: #f0fdf4 !important;
+}
+[data-theme="dark"] .dark\:bg-gray-900,
+[data-theme="dark"] .dark\:bg-gray-950,
+[data-theme="dark"] .dark\:bg-gray-800,
+[data-theme="dark"] .dark\:bg-black\/60 {
+  background-color: var(--bg-card) !important;
+}
+[data-theme="dark"] .dark\:text-white,
+[data-theme="dark"] .dark\:text-gray-200,
+[data-theme="dark"] .dark\:text-gray-300,
+[data-theme="dark"] .dark\:text-gray-400 {
+  color: #f1f5f9 !important;
+}
+[data-theme="dark"] .dark\:border-gray-700,
+[data-theme="dark"] .dark\:border-gray-800 {
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .dark\:from-gray-900,
+[data-theme="dark"] .dark\:via-gray-800,
+[data-theme="dark"] .dark\:to-black,
+[data-theme="dark"] .dark\:from-green-800,
+[data-theme="dark"] .dark\:to-black {
+  /* gradient parts - use solid fallback */
+}
+[data-theme="dark"] .dark\:bg-green-900\/30,
+[data-theme="dark"] .dark\:hover\:bg-green-900\/30 {
+  background-color: rgba(34, 197, 94, 0.2) !important;
+}
+[data-theme="dark"] .dark\:bg-gray-700 {
+  background-color: #475569 !important;
+}
+
+/* Layout uses vars for guaranteed effect */
+.theme-page {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+.theme-card {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+.theme-sidebar {
+  background: var(--bg-sidebar);
+  color: var(--text-primary);
+}
+.theme-sidebar a:hover {
+  background: var(--hover-bg);
+}
+.theme-header {
+  background: var(--bg-header);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+[data-theme="dark"] .theme-sidebar-title {
+  color: #f0fdf4 !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+.animate-blob {
+  animation: blob 7s infinite;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+.animate-shake {
+  animation: shake 0.5s;
+}
+
+/* XP blast confetti effect for watering plants */
+@keyframes xp-burst {
+  0% {
+    transform: scale(0.5) translateY(20px);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.1) translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(-30px);
+    opacity: 0;
+  }
+}
+
+.xp-blast {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+}
+
+.xp-blast-content {
+  background: radial-gradient(circle at top, #22c55e, #16a34a, #14532d);
+  color: #f0fdf4;
+  padding: 1.25rem 2rem;
+  border-radius: 9999px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  animation: xp-burst 700ms ease-out forwards;
+  border: 2px solid #bbf7d0;
+}
+
+[data-theme="dark"] .xp-blast-content {
+  border-color: #22c55e;
+}
+
+/* Plant health sparkle */
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.08); }
+}
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+/* Confetti celebration for water */
+@keyframes confetti-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
